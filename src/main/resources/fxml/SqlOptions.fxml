@@ -8,7 +8,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="284.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billboard.SqlOptionsController">
    <children>
-      <Button id="loadButton" layoutX="63.0" layoutY="218.0" mnemonicParsing="false" text="Load">
+      <Button id="loadButton" layoutX="63.0" layoutY="218.0" mnemonicParsing="false" onAction="#handleLoadButton" text="Load">
          <font>
             <Font size="18.0" />
          </font>
@@ -33,7 +33,7 @@
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Button id="cancelButton" layoutX="261.0" layoutY="218.0" mnemonicParsing="false" text="Cancel">
+      <Button id="cancelButton" layoutX="261.0" layoutY="218.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Cancel">
          <font>
             <Font size="18.0" />
          </font>

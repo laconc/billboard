@@ -1,6 +1,7 @@
 package billboard;
 
 import java.io.IOException;
+import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -131,20 +132,27 @@ public class HomePageController {
             try {
                 Parent sqlPage = FXMLLoader.load(getClass().getResource("/fxml/SqlOptions.fxml"));
                 Scene sqlScene = new Scene(sqlPage);
-                Stage sqlStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage sqlStage = new Stage();
                 sqlStage.setScene(sqlScene);
                 sqlStage.show();
-//                Parent table_page_parent = FXMLLoader.load(getClass().getResource("/fxml/TableLayout.fxml"));
-//                Scene table_page_scene = new Scene(table_page_parent);
-//                Stage app_table = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                app_table.setScene(table_page_scene);
-//                app_table.show();
             } catch(Exception e) {
                    System.out.println("Error");
             }
         }
         else if (csvRB.isSelected()) {
-
+            loadTable(event, null);
+        }
+    }
+    
+    void loadTable(ActionEvent event, HashMap options) {
+        try {
+            Parent table_page_parent = FXMLLoader.load(getClass().getResource("/fxml/TableLayout.fxml"));
+            Scene table_page_scene = new Scene(table_page_parent);
+            Stage app_table = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            app_table.setScene(table_page_scene);
+            app_table.show();
+        } catch(Exception e) {
+               System.out.println("Error");
         }
     }
 }

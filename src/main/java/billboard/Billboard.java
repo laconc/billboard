@@ -12,6 +12,8 @@ import javafx.stage.Stage;
  */
 public class Billboard extends Application {
     
+    public static Stage primaryStage;
+    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
