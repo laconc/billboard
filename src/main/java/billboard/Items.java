@@ -65,7 +65,4 @@ public class Items {
    public void setPercent(Double percent) {//5
        this.percent = percent;
    }
- 
-   
- 
 }

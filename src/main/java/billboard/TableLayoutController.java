@@ -21,7 +21,6 @@ import javafx.stage.Stage;
 
 public class TableLayoutController implements Initializable {
     
-    
     @FXML
     private TableView<Items> tableView;
     
@@ -58,6 +57,7 @@ public class TableLayoutController implements Initializable {
             System.out.println("Error");
         }
     }
+
     @FXML
     void handleGenerateChartButton (ActionEvent events) throws IOException {
         if (barChartRB2.isSelected()){
@@ -82,7 +82,6 @@ public class TableLayoutController implements Initializable {
 //        fourthCol.setCellValueFactory(new PropertyValueFactory<>("percent"));
 //        ObservableList<Items> data = getItems();
 //        System.out.println(data);
-        
     }
     //populates the list
     private ObservableList<Items> getItems() {
@@ -93,7 +92,5 @@ public class TableLayoutController implements Initializable {
  
       ObservableList<Items> list = FXCollections.observableArrayList(row_1, row_2, row_3);
       return list;
-  }
-
+    }
 }
-

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package billboard;
 
 import javafx.scene.chart.NumberAxis;
@@ -10,7 +5,6 @@ import javafx.scene.chart.StackedAreaChart;
 import javafx.scene.chart.XYChart;
 
 /**
- * FXML Controller class
  *
  * @author vita
  */
@@ -42,8 +36,5 @@ public class AreaChart  {
             new XYChart.Data(12, 10));
         
         ac.getData().addAll(ss1, ss2);
-    }    
-
-    
-    
+    }
 }

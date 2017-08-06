@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package billboard;
 
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.layout.Pane;
 
 public class LineGraph  {
     
@@ -30,9 +24,6 @@ public class LineGraph  {
             new XYChart.Data(11, 29),
             new XYChart.Data(12, 25));
         
-        lc.getData().add(ss);
-        
-    }    
-
-    
+        lc.getData().add(ss); 
+    }  
 }
