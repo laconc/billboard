@@ -70,7 +70,7 @@ public class TableLayoutController implements Initializable {
     @FXML
     void handleHomeButton(ActionEvent event) {
         try{
-            Parent homeParent = FXMLLoader.load(getClass().getResource("/fxml/HomePage.fxml"));
+            Parent homeParent = FXMLLoader.load(getClass().getResource("/fxml/Home.fxml"));
             Scene homeScene = new Scene(homeParent);
             Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             homeStage.setScene(homeScene);
