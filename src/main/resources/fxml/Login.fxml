@@ -8,9 +8,9 @@
 
 <AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" style="-fx-background-color: #000000; -fx-border-color: #ffff00; -fx-border-width: 5px; -fx-border-radius: 3px;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="billboard.LoginController">
     <children>
-        <Button fx:id="button" layoutX="122.0" layoutY="149.0" onAction="#handleLoginButton" text="Log In" />
-        <Label fx:id="label" layoutX="115.0" layoutY="113.0" minHeight="16" minWidth="69" />
-      <TextField layoutX="79.0" layoutY="45.0" promptText="User Name" />
+      <Button fx:id="loginButton" layoutX="122.0" layoutY="149.0" onAction="#handleLoginButton" text="Log In" />
+      <Label fx:id="status" layoutX="115.0" layoutY="113.0" minHeight="16" minWidth="69" />
+      <TextField layoutX="79.0" layoutY="45.0" promptText="Username" />
       <PasswordField layoutX="79.0" layoutY="80.0" promptText="Password" />
     </children>
 </AnchorPane>

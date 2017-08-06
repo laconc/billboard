@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="284.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billboard.SqlOptionsController">
+   <children>
+      <Button id="loadButton" layoutX="63.0" layoutY="218.0" mnemonicParsing="false" text="Load">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <TextField id="serverField" layoutX="63.0" layoutY="35.0" prefHeight="27.0" prefWidth="287.0" promptText="Server">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField id="portField" layoutX="388.0" layoutY="35.0" prefHeight="27.0" prefWidth="75.0" promptText="Port">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField id="userField" layoutX="63.0" layoutY="97.0" prefHeight="27.0" prefWidth="287.0" promptText="Username">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <PasswordField id="passField" layoutX="63.0" layoutY="161.0" prefHeight="27.0" prefWidth="287.0" promptText="Password">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </PasswordField>
+      <Button id="cancelButton" layoutX="261.0" layoutY="218.0" mnemonicParsing="false" text="Cancel">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

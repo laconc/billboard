@@ -129,11 +129,16 @@ public class HomePageController {
     void handlePopulateTable(ActionEvent event) {
         if (sqlRB.isSelected()) {
             try {
-                Parent table_page_parent = FXMLLoader.load(getClass().getResource("/fxml/TableLayout.fxml"));
-                Scene table_page_scene = new Scene(table_page_parent);
-                Stage app_table = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                app_table.setScene(table_page_scene);
-                app_table.show();
+                Parent sqlPage = FXMLLoader.load(getClass().getResource("/fxml/SqlOptions.fxml"));
+                Scene sqlScene = new Scene(sqlPage);
+                Stage sqlStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                sqlStage.setScene(sqlScene);
+                sqlStage.show();
+//                Parent table_page_parent = FXMLLoader.load(getClass().getResource("/fxml/TableLayout.fxml"));
+//                Scene table_page_scene = new Scene(table_page_parent);
+//                Stage app_table = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                app_table.setScene(table_page_scene);
+//                app_table.show();
             } catch(Exception e) {
                    System.out.println("Error");
             }

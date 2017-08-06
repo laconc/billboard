@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 public class LoginController implements Initializable {
     
     @FXML
-    private Label label;
+    private Label status;
     
     @FXML
     void handleLoginButton(ActionEvent event) throws IOException {
@@ -31,8 +31,8 @@ public class LoginController implements Initializable {
         app_main.setScene(main_page_scene);
         app_main.show();
         
-        label.setTextFill(Color.GREEN);
-        label.setText("Success");
+        status.setTextFill(Color.GREEN);
+        status.setText("Success");
     }
     
     @Override
