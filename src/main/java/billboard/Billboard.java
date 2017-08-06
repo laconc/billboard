@@ -8,10 +8,9 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author vita
+ * @author vita, dash
  */
 public class Billboard extends Application {
-    
     public static Stage primaryStage;
     
     @Override

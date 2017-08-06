@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -62,8 +60,8 @@ public class SqlOptionsController implements Initializable {
             rootStage.setScene(tableScene);
             rootStage.show();
             close(event);
-        } catch (IOException ex) {
-            Logger.getLogger(SqlOptionsController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            System.out.println("Error: " + e);
         }
     }
     

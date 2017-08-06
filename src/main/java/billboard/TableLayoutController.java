@@ -4,6 +4,9 @@ import com.opencsv.CSVReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -55,7 +58,7 @@ public class TableLayoutController implements Initializable {
             Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             homeStage.setScene(homeScene);
             homeStage.show();
-        } catch(Exception e){
+        } catch(IOException e) {
             System.out.println("Error" + e);
         }
     }
@@ -69,7 +72,7 @@ public class TableLayoutController implements Initializable {
                 barChartStage.setTitle("Billboard: Bar Chart");
                 barChartStage.setScene(new Scene(barChartParent));
                 barChartStage.show();
-            } catch (Exception e){
+            } catch (IOException e) {
                System.out.println("Error: " + e);
             }
         }
@@ -79,7 +82,15 @@ public class TableLayoutController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {}
     
     void loadSql(HashMap settings) {
-        
+        Connection c = null;
+        String connString = "jdbc:postgresql://" + settings.get("server") + ":" + settings.get("port") + "/" + settings.get("table");
+        try {
+            Class.forName("org.postgresql.Driver");
+            c = DriverManager
+                    .getConnection(connString, (String) settings.get("user"), (String) settings.get("pass"));
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
     }
     
     void loadCsv() {
