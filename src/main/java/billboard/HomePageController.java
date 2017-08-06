@@ -1,18 +1,13 @@
 package billboard;
 
 import java.io.IOException;
-import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.SplitPane;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
@@ -22,25 +17,13 @@ import javafx.stage.Stage;
 public class HomePageController {
 
     @FXML
-    private SplitPane mainPageView;
-    
-     @FXML
-    private GridPane gridOptions;
-
-    @FXML
     private RadioButton sqlRB;
-
-    @FXML
-    private ToggleGroup dataBaseToggle;
 
     @FXML
     private RadioButton csvRB;
 
     @FXML
     private RadioButton barChartRB;
-
-    @FXML
-    private ToggleGroup chartTypeToggle;
 
     @FXML
     private RadioButton lineChartRB;
@@ -53,25 +36,18 @@ public class HomePageController {
 
     @FXML
     private RadioButton areaChartRB;
-
-    @FXML
-    private Button createGraphButton;
-    
-    @FXML
-    private Button populateTable;
     
     @FXML
     void handleButtonAction(ActionEvent event) throws IOException {
-        
         if (pieChartRB.isSelected()) {
             try{
                 PieGraph pc = new PieGraph();
-                Stage lineChart_stage = new Stage();
-                lineChart_stage.setWidth(1000);
-                lineChart_stage.setHeight(600);
-                lineChart_stage.setTitle("Billboard: Pie Chart");
-                lineChart_stage.setScene(new Scene(pc.pc));
-                lineChart_stage.show();
+                Stage pieChartStage = new Stage();
+                pieChartStage.setWidth(1000);
+                pieChartStage.setHeight(600);
+                pieChartStage.setTitle("Billboard: Pie Chart");
+                pieChartStage.setScene(new Scene(pc.pc));
+                pieChartStage.show();
             } catch(Exception e) {
                System.out.println("Error");
             }
@@ -79,12 +55,12 @@ public class HomePageController {
         else if (lineChartRB.isSelected()) {
             try{
                 LineGraph lg = new LineGraph();
-                Stage lineChart_stage = new Stage();
-                lineChart_stage.setWidth(1000);
-                lineChart_stage.setHeight(600);
-                lineChart_stage.setTitle("Billboard: Line Chart");
-                lineChart_stage.setScene(new Scene(lg.lc));
-                lineChart_stage.show();
+                Stage lineChartStage = new Stage();
+                lineChartStage.setWidth(1000);
+                lineChartStage.setHeight(600);
+                lineChartStage.setTitle("Billboard: Line Chart");
+                lineChartStage.setScene(new Scene(lg.lc));
+                lineChartStage.show();
             } catch(Exception e) {
                System.out.println("Error");
             }
@@ -92,12 +68,12 @@ public class HomePageController {
         else if (scatterChartRB.isSelected()) {
             try{
                 ScatterPlot sp = new ScatterPlot();
-                Stage scatterPlot_stage = new Stage();
-                scatterPlot_stage.setHeight(600);
-                scatterPlot_stage.setWidth(1000);
-                scatterPlot_stage.setTitle("Billboard: Scatter Plot");
-                scatterPlot_stage.setScene(new Scene(sp.sc));
-                scatterPlot_stage.show();
+                Stage scatterPlotStage = new Stage();
+                scatterPlotStage.setHeight(600);
+                scatterPlotStage.setWidth(1000);
+                scatterPlotStage.setTitle("Billboard: Scatter Plot");
+                scatterPlotStage.setScene(new Scene(sp.sc));
+                scatterPlotStage.show();
             } catch(Exception e) {
                System.out.println("Error");
             }
@@ -105,12 +81,12 @@ public class HomePageController {
         else if (areaChartRB.isSelected()) {
             try{
                 AreaChart areaChart = new AreaChart();
-                Stage areaChar_stage = new Stage();
-                areaChar_stage.setHeight(600);
-                areaChar_stage.setWidth(1000);
-                areaChar_stage.setTitle("Billboard: Area Plot");
-                areaChar_stage.setScene(new Scene(areaChart.ac));
-                areaChar_stage.show();
+                Stage areaChartStage = new Stage();
+                areaChartStage.setHeight(600);
+                areaChartStage.setWidth(1000);
+                areaChartStage.setTitle("Billboard: Area Plot");
+                areaChartStage.setScene(new Scene(areaChart.ac));
+                areaChartStage.show();
             } catch(Exception e) {
                System.out.println("Error");
             }
@@ -118,12 +94,12 @@ public class HomePageController {
         else if (barChartRB.isSelected()) {
             try{
                 BarGraph bg = new BarGraph();
-                Stage barChar_stage = new Stage();
-                barChar_stage.setHeight(600);
-                barChar_stage.setWidth(1000);
-                barChar_stage.setTitle("Billboard: Bar Graph");
-                barChar_stage.setScene(new Scene(bg.bc));
-                barChar_stage.show();
+                Stage barChartStage = new Stage();
+                barChartStage.setHeight(600);
+                barChartStage.setWidth(1000);
+                barChartStage.setTitle("Billboard: Bar Graph");
+                barChartStage.setScene(new Scene(bg.bc));
+                barChartStage.show();
             } catch(Exception e) {
                System.out.println("Error");
             }

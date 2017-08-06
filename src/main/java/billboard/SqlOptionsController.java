@@ -30,6 +30,9 @@ public class SqlOptionsController implements Initializable {
     public TextField portField;
     
     @FXML
+    public TextField dbField;
+    
+    @FXML
     public TextField tableField;
     
     @FXML
@@ -46,6 +49,7 @@ public class SqlOptionsController implements Initializable {
         HashMap<String,String> settings = new HashMap<>();
         settings.put("server", serverField.getText());
         settings.put("port", portField.getText());
+        settings.put("db", dbField.getText());
         settings.put("table", tableField.getText());
         settings.put("user", userField.getText());
         settings.put("pass", passField.getText());

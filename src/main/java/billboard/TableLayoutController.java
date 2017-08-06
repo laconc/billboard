@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,15 +43,27 @@ public class TableLayoutController implements Initializable {
 
     @FXML
     private TableColumn<Entry,String> secondCol;
-
-    @FXML
-    private Button homeButton;
-
-    @FXML
-    private Button generateChartButton;
     
     @FXML
-    private RadioButton barChartRB2;
+    private RadioButton sqlRB;
+
+    @FXML
+    private RadioButton csvRB;
+
+    @FXML
+    private RadioButton barChartRB;
+
+    @FXML
+    private RadioButton lineChartRB;
+
+    @FXML
+    private RadioButton pieChartRB;
+
+    @FXML
+    private RadioButton scatterChartRB;
+
+    @FXML
+    private RadioButton areaChartRB;
 
     @FXML
     void handleHomeButton(ActionEvent event) {
@@ -64,16 +79,70 @@ public class TableLayoutController implements Initializable {
     }
 
     @FXML
-    void handleGenerateChartButton (ActionEvent events) throws IOException {
-        if (barChartRB2.isSelected()){
+    void handleGenerateChartButton (ActionEvent event) throws IOException {
+        if (pieChartRB.isSelected()) {
             try{
-                Parent barChartParent = FXMLLoader.load(getClass().getResource("/fxml/BarGraph.fxml"));
+                PieGraph pc = new PieGraph();
+                Stage pieChartStage = new Stage();
+                pieChartStage.setWidth(1000);
+                pieChartStage.setHeight(600);
+                pieChartStage.setTitle("Billboard: Pie Chart");
+                pieChartStage.setScene(new Scene(pc.pc));
+                pieChartStage.show();
+            } catch(Exception e) {
+               System.out.println("Error");
+            }
+        }
+        else if (lineChartRB.isSelected()) {
+            try{
+                LineGraph lg = new LineGraph();
+                Stage lineChartStage = new Stage();
+                lineChartStage.setWidth(1000);
+                lineChartStage.setHeight(600);
+                lineChartStage.setTitle("Billboard: Line Chart");
+                lineChartStage.setScene(new Scene(lg.lc));
+                lineChartStage.show();
+            } catch(Exception e) {
+               System.out.println("Error");
+            }
+        }
+        else if (scatterChartRB.isSelected()) {
+            try{
+                ScatterPlot sp = new ScatterPlot();
+                Stage scatterPlotStage = new Stage();
+                scatterPlotStage.setHeight(600);
+                scatterPlotStage.setWidth(1000);
+                scatterPlotStage.setTitle("Billboard: Scatter Plot");
+                scatterPlotStage.setScene(new Scene(sp.sc));
+                scatterPlotStage.show();
+            } catch(Exception e) {
+               System.out.println("Error");
+            }
+        }
+        else if (areaChartRB.isSelected()) {
+            try{
+                AreaChart areaChart = new AreaChart();
+                Stage areaChartStage = new Stage();
+                areaChartStage.setHeight(600);
+                areaChartStage.setWidth(1000);
+                areaChartStage.setTitle("Billboard: Area Plot");
+                areaChartStage.setScene(new Scene(areaChart.ac));
+                areaChartStage.show();
+            } catch(Exception e) {
+               System.out.println("Error");
+            }
+        }
+        else if (barChartRB.isSelected()) {
+            try{
+                BarGraph bg = new BarGraph();
                 Stage barChartStage = new Stage();
-                barChartStage.setTitle("Billboard: Bar Chart");
-                barChartStage.setScene(new Scene(barChartParent));
+                barChartStage.setHeight(600);
+                barChartStage.setWidth(1000);
+                barChartStage.setTitle("Billboard: Bar Graph");
+                barChartStage.setScene(new Scene(bg.bc));
                 barChartStage.show();
-            } catch (IOException e) {
-               System.out.println("Error: " + e);
+            } catch(Exception e) {
+               System.out.println("Error");
             }
         }
     }
@@ -82,8 +151,9 @@ public class TableLayoutController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {}
     
     void loadSql(HashMap settings) {
+        sqlRB.setSelected(true);
         Connection c = null;
-        String connString = "jdbc:postgresql://" + settings.get("server") + ":" + settings.get("port") + "/" + settings.get("table");
+        String connString = "jdbc:postgresql://" + settings.get("server") + ":" + settings.get("port") + "/" + settings.get("db");
         try {
             Class.forName("org.postgresql.Driver");
             c = DriverManager
@@ -91,16 +161,42 @@ public class TableLayoutController implements Initializable {
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
+        
+        Statement stmt;
+        List<String[]> entries = new ArrayList<>();
+        try {
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM " + (String) settings.get("table") + ";" );
+            entries.add(new String[] {
+                rs.getMetaData().getColumnName(2),
+                rs.getMetaData().getColumnName(3)
+            });
+            
+            while ( rs.next() ) {
+                entries.add(new String[] {
+                    rs.getString(2),
+                    rs.getString(3)
+                });
+            }
+         rs.close();
+         stmt.close();
+         c.close();
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
+        
+        populateTable(entries);
     }
     
     void loadCsv() {
+        csvRB.setSelected(true);
         String testFile = "src/main/resources/test_files/BrandsData.csv";
         
         try {
             CSVReader reader = new CSVReader(new FileReader(testFile));
             List<String[]> entries = reader.readAll();
             populateTable(entries);
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Error: " + e);
         }
     }
