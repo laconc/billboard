@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billboard.HomePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="billboard.HomePageController">
    <children>
       <BorderPane layoutX="-3.0" layoutY="-4.0" prefHeight="407.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -69,7 +69,7 @@
                                           <Font name="Arial Black" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="sqlRB" mnemonicParsing="false" prefHeight="40.0" prefWidth="194.0" text="SQL">
+                                    <RadioButton fx:id="sqlRB" mnemonicParsing="false" prefHeight="40.0" prefWidth="194.0" selected="true" text="SQL">
                                        <VBox.margin>
                                           <Insets left="30.0" />
                                        </VBox.margin>
@@ -91,7 +91,7 @@
                                           <Font name="Arial Black" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="barChartRB" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Bar Chart">
+                                    <RadioButton fx:id="barChartRB" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" selected="true" text="Bar Chart" toggleGroup="$chartTypeToggle">
                                        <VBox.margin>
                                           <Insets left="30.0" />
                                        </VBox.margin>
@@ -135,21 +135,21 @@
                             <RowConstraints maxHeight="126.0" minHeight="0.0" prefHeight="4.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <VBox prefHeight="239.0" prefWidth="260.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 10px;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <VBox prefHeight="239.0" prefWidth="260.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 10px;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                  <children>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="283.0" style="-fx-border-color: #000000;" text="Data Input:">
+                                    <Label alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="233.0" style="-fx-border-color: #000000;" text="Data Input:">
                                        <font>
                                           <Font name="Arial Black" size="14.0" />
                                        </font>
                                     </Label>
                                     <HBox prefHeight="35.0" prefWidth="260.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="110.0" text="x-Value:">
+                                          <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="110.0" text="x-Value:  ">
                                              <font>
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField prefHeight="36.0" prefWidth="160.0">
+                                          <TextField prefHeight="36.0" prefWidth="260.0" fx:id="xField">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" top="5.0" />
                                              </HBox.margin>
@@ -158,12 +158,12 @@
                                     </HBox>
                                     <HBox prefHeight="35.0" prefWidth="260.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="110.0" text="y-Value">
+                                          <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="110.0" text="y-Value:  ">
                                              <font>
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField prefHeight="36.0" prefWidth="160.0">
+                                          <TextField fx:id="yField" prefHeight="36.0" prefWidth="260.0">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" />
                                              </HBox.margin>
@@ -172,12 +172,12 @@
                                     </HBox>
                                     <HBox prefHeight="35.0" prefWidth="260.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="x-Axis Label:">
+                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="x-Axis Label:  ">
                                              <font>
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField prefHeight="36.0" prefWidth="160.0">
+                                          <TextField prefHeight="36.0" prefWidth="260.0" fx:id="xAxisField">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" />
                                              </HBox.margin>
@@ -186,12 +186,12 @@
                                     </HBox>
                                     <HBox prefHeight="35.0" prefWidth="200.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="y-Axis Label:">
+                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="y-Axis Label:  ">
                                              <font>
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField prefHeight="36.0" prefWidth="160.0">
+                                          <TextField fx:id="yAxisField" prefHeight="36.0" prefWidth="260.0">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" />
                                              </HBox.margin>
@@ -200,12 +200,12 @@
                                     </HBox>
                                     <HBox prefHeight="35.0" prefWidth="200.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="110.0" text="Table Name:">
+                                          <Label alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="110.0" text="Table Name:  ">
                                              <font>
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField prefHeight="36.0" prefWidth="160.0">
+                                          <TextField fx:id="tableField" prefHeight="36.0" prefWidth="260.0">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" />
                                              </HBox.margin>
@@ -214,12 +214,12 @@
                                     </HBox>
                                     <HBox prefHeight="35.0" prefWidth="200.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="Item Name:">
+                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="Item Name:  ">
                                              <font>
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField prefHeight="36.0" prefWidth="160.0">
+                                          <TextField fx:id="itemField" prefHeight="36.0" prefWidth="260.0">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" />
                                              </HBox.margin>
@@ -228,10 +228,12 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                              <VBox prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <children>
-                                    <Button fx:id="createGraphButton" mnemonicParsing="false" onAction="#handleButtonAction" text="Create Graph" />
-                                    <Button fx:id="populateTable" mnemonicParsing="false" onAction="#handlePopulateTable" text="Populate Table" />
+                                    <Button fx:id="populateTable" mnemonicParsing="false" onAction="#handlePopulateTable" text="Populate Table">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin></Button>
                                  </children>
                               </VBox>
                            </children>

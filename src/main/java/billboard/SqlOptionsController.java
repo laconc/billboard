@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.stage.Stage;
 
 /**
@@ -22,24 +23,25 @@ import javafx.stage.Stage;
 public class SqlOptionsController implements Initializable {
     
     private Stage rootStage;
+    private Toggle toggle;
     
     @FXML
-    public TextField serverField;
+    private TextField serverField;
     
     @FXML
-    public TextField portField;
+    private TextField portField;
     
     @FXML
-    public TextField dbField;
+    private TextField dbField;
     
     @FXML
-    public TextField tableField;
+    private TextField tableField;
     
     @FXML
-    public TextField userField;
+    private TextField userField;
     
     @FXML
-    public TextField passField;
+    private TextField passField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
@@ -58,7 +60,7 @@ public class SqlOptionsController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TableLayout.fxml"));
             Parent tableParent = (Parent) loader.load();
             TableLayoutController controller = loader.getController();
-            controller.loadSql(settings);
+            controller.loadSql(settings, toggle);
             
             Scene tableScene = new Scene(tableParent);
             rootStage.setScene(tableScene);
@@ -82,5 +84,9 @@ public class SqlOptionsController implements Initializable {
     
     void setRoot(Stage stage) {
         rootStage = stage;
+    }
+    
+    void setSelectedChart(Toggle toggle) {
+        this.toggle = toggle;
     }
 }

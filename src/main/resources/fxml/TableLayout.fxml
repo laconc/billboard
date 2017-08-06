@@ -64,7 +64,7 @@
                                           <Font name="Arial Black" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="sqlRadioButton2" mnemonicParsing="false" prefHeight="40.0" prefWidth="194.0" text="SQL">
+                                    <RadioButton fx:id="sqlRB" mnemonicParsing="false" prefHeight="40.0" prefWidth="194.0" text="SQL">
                                        <VBox.margin>
                                           <Insets left="30.0" />
                                        </VBox.margin>
@@ -72,7 +72,7 @@
                                        <ToggleGroup fx:id="dataBaseToggle2" />
                                     </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton fx:id="csvRadioButton2" mnemonicParsing="false" prefHeight="41.0" prefWidth="198.0" text="CSV" toggleGroup="$dataBaseToggle2">
+                                    <RadioButton fx:id="csvRB" mnemonicParsing="false" prefHeight="41.0" prefWidth="198.0" text="CSV" toggleGroup="$dataBaseToggle2">
                                        <VBox.margin>
                                           <Insets left="30.0" />
                                        </VBox.margin>
@@ -86,35 +86,30 @@
                                           <Font name="Arial Black" size="14.0" />
                                        </font>
                                     </Label>
-                                    <RadioButton fx:id="barChartRB2" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Bar Chart">
+                                    <RadioButton fx:id="barChartRB" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Bar Chart" toggleGroup="$chartTypeToggle">
                                        <VBox.margin>
                                           <Insets left="30.0" />
                                        </VBox.margin>
                                     <toggleGroup>
-                                       <ToggleGroup fx:id="chartTypeToggle2" />
+                                       <ToggleGroup fx:id="chartTypeToggle" />
                                     </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton fx:id="lineChartRB2" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Line Chart" toggleGroup="$chartTypeToggle2">
+                                    <RadioButton fx:id="lineChartRB" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Line Chart" toggleGroup="$chartTypeToggle">
                                        <VBox.margin>
                                           <Insets left="30.0" />
                                        </VBox.margin>
                                     </RadioButton>
-                                    <RadioButton fx:id="pieChartRB2" mnemonicParsing="false" prefHeight="30.0" prefWidth="173.0" text="Pie Chart" toggleGroup="$chartTypeToggle2">
+                                    <RadioButton fx:id="pieChartRB" mnemonicParsing="false" prefHeight="30.0" prefWidth="173.0" text="Pie Chart" toggleGroup="$chartTypeToggle">
                                        <VBox.margin>
                                           <Insets left="30.0" />
                                        </VBox.margin>
                                     </RadioButton>
-                                    <RadioButton fx:id="scatterChartRB2" mnemonicParsing="false" prefHeight="29.0" prefWidth="165.0" text="Scatter Chart" toggleGroup="$chartTypeToggle2">
+                                    <RadioButton fx:id="scatterChartRB" mnemonicParsing="false" prefHeight="29.0" prefWidth="165.0" text="Scatter Chart" toggleGroup="$chartTypeToggle">
                                        <VBox.margin>
                                           <Insets left="30.0" />
                                        </VBox.margin>
                                     </RadioButton>
-                                    <RadioButton fx:id="areaChartRB2" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Area Chart" toggleGroup="$chartTypeToggle2">
-                                       <VBox.margin>
-                                          <Insets left="30.0" />
-                                       </VBox.margin>
-                                    </RadioButton>
-                                    <RadioButton fx:id="bubbleChartRB2" mnemonicParsing="false" prefHeight="31.0" prefWidth="165.0" text="Bubble Chart" toggleGroup="$chartTypeToggle2">
+                                    <RadioButton fx:id="areaChartRB" mnemonicParsing="false" prefHeight="30.0" prefWidth="165.0" text="Area Chart" toggleGroup="$chartTypeToggle">
                                        <VBox.margin>
                                           <Insets left="30.0" />
                                        </VBox.margin>

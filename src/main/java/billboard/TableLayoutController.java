@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,10 +23,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -46,6 +48,9 @@ public class TableLayoutController implements Initializable {
     
     @FXML
     private RadioButton sqlRB;
+    
+    @FXML
+    private ToggleGroup chartTypeToggle;
 
     @FXML
     private RadioButton csvRB;
@@ -150,8 +155,10 @@ public class TableLayoutController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
     
-    void loadSql(HashMap settings) {
+    void loadSql(HashMap settings, Toggle toggle) {
         sqlRB.setSelected(true);
+        setChartType(toggle);
+        
         Connection c = null;
         String connString = "jdbc:postgresql://" + settings.get("server") + ":" + settings.get("port") + "/" + settings.get("db");
         try {
@@ -188,8 +195,9 @@ public class TableLayoutController implements Initializable {
         populateTable(entries);
     }
     
-    void loadCsv() {
+    void loadCsv(Toggle toggle) {
         csvRB.setSelected(true);
+        setChartType(toggle);
         String testFile = "src/main/resources/test_files/BrandsData.csv";
         
         try {
@@ -215,5 +223,15 @@ public class TableLayoutController implements Initializable {
         secondCol.setCellValueFactory(new PropertyValueFactory<Entry,String>("second"));
         
         tableView.setItems(tableEntries);
+    }
+    
+    void setChartType(Toggle toggle) {
+        Toggle selectedToggle = barChartRB;
+        for (Toggle t : chartTypeToggle.getToggles()) {
+            if (((RadioButton) t).getId().equals(((RadioButton) toggle).getId())) {
+                selectedToggle = t;
+            }
+        }
+        chartTypeToggle.selectToggle(selectedToggle);
     }
 }
