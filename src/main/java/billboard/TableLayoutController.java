@@ -1,10 +1,14 @@
 package billboard;
 
+import com.opencsv.CSVReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +20,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author vita, dash
+ */
 public class TableLayoutController implements Initializable {
     
     @FXML
@@ -48,13 +55,13 @@ public class TableLayoutController implements Initializable {
     @FXML
     void handleHomeButton(ActionEvent event) {
         try{
-            Parent main_page_parent = FXMLLoader.load(getClass().getResource("/fxml/HomePage.fxml"));
-            Scene main_page_scene = new Scene(main_page_parent);
-            Stage app_main = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            app_main.setScene(main_page_scene);
-            app_main.show();
+            Parent homeParent = FXMLLoader.load(getClass().getResource("/fxml/HomePage.fxml"));
+            Scene homeScene = new Scene(homeParent);
+            Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            homeStage.setScene(homeScene);
+            homeStage.show();
         } catch(Exception e){
-            System.out.println("Error");
+            System.out.println("Error" + e);
         }
     }
 
@@ -62,35 +69,31 @@ public class TableLayoutController implements Initializable {
     void handleGenerateChartButton (ActionEvent events) throws IOException {
         if (barChartRB2.isSelected()){
             try{
-                Parent barChart_parent = FXMLLoader.load(getClass().getResource("/fxml/BarGraph.fxml"));
-                Stage barChart_stage = new Stage();
-                barChart_stage.setTitle("Billboard: Bar Chart");
-                barChart_stage.setScene(new Scene(barChart_parent));
-                barChart_stage.show();
-            } catch (Exception f){
-               System.out.println("Error");
+                Parent barChartParent = FXMLLoader.load(getClass().getResource("/fxml/BarGraph.fxml"));
+                Stage barChartStage = new Stage();
+                barChartStage.setTitle("Billboard: Bar Chart");
+                barChartStage.setScene(new Scene(barChartParent));
+                barChartStage.show();
+            } catch (Exception e){
+               System.out.println("Error: " + e);
             }
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //defines each column
-//        firstCol.setCellValueFactory(new PropertyValueFactory<>("items"));
-//        secondCol.setCellValueFactory(new PropertyValueFactory<>("x"));
-//        thirdCol.setCellValueFactory(new PropertyValueFactory<>("y"));
-//        fourthCol.setCellValueFactory(new PropertyValueFactory<>("percent"));
-//        ObservableList<Items> data = getItems();
-//        System.out.println(data);
+        loadCsv();
     }
-    //populates the list
-    private ObservableList<Items> getItems() {
- 
-      Items row_1 = new Items(1L, "a", 1, 2, 3.0);
-      Items row_2 = new Items(2L, "b", 4, 5, 6.0);
-      Items row_3 = new Items(3L, "c", 7, 8, 9.0);
- 
-      ObservableList<Items> list = FXCollections.observableArrayList(row_1, row_2, row_3);
-      return list;
+    
+    void loadCsv() {
+        String testFile = "src/main/resources/test_files/BrandsData.csv";
+        
+        try {
+            CSVReader reader = new CSVReader(new FileReader(testFile));
+            List<String[]> entries = reader.readAll();
+//            System.out.println(entries.get(0)[0]);
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
     }
 }

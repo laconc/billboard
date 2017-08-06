@@ -15,6 +15,10 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+/**
+ *
+ * @author vita, dash
+ */
 public class HomePageController {
 
     @FXML
@@ -145,14 +149,19 @@ public class HomePageController {
     }
     
     void loadTable(ActionEvent event, HashMap options) {
-        try {
-            Parent table_page_parent = FXMLLoader.load(getClass().getResource("/fxml/TableLayout.fxml"));
-            Scene table_page_scene = new Scene(table_page_parent);
-            Stage app_table = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            app_table.setScene(table_page_scene);
-            app_table.show();
-        } catch(Exception e) {
-               System.out.println("Error");
+        if (options == null) { // csv
+            try {
+                Parent tableParent = FXMLLoader.load(getClass().getResource("/fxml/TableLayout.fxml"));
+                Scene tableScene = new Scene(tableParent);
+                Stage tableStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                tableStage.setScene(tableScene);
+                tableStage.show();
+            } catch(Exception e) {
+                   System.out.println("Error");
+            }
+        }
+        else { // sql
+            
         }
     }
 }
