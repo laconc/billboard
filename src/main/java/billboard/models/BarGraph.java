@@ -22,7 +22,7 @@ public class BarGraph extends Graph {
         xAxis.setLabel((String) settings.get("xAxis"));       
         yAxis.setLabel((String) settings.get("yAxis"));
         
-        XYChart.Series series = new XYChart.Series ();
+        XYChart.Series series = new XYChart.Series();
         series.setName((String) settings.get("series"));
         
         for (Entry entry : entries) {
