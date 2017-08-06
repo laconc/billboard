@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,6 +68,8 @@ public class TableLayoutController implements Initializable {
 
     @FXML
     private RadioButton areaChartRB;
+    
+    HashMap<String,String> tableSettings;
 
     @FXML
     void handleHomeButton(ActionEvent event) {
@@ -79,7 +80,7 @@ public class TableLayoutController implements Initializable {
             homeStage.setScene(homeScene);
             homeStage.show();
         } catch(IOException e) {
-            System.out.println("Error" + e);
+            System.out.println("Error: " + e);
         }
     }
 
@@ -95,7 +96,7 @@ public class TableLayoutController implements Initializable {
                 pieChartStage.setScene(new Scene(pc.pc));
                 pieChartStage.show();
             } catch(Exception e) {
-               System.out.println("Error");
+               System.out.println("Error: " + e);
             }
         }
         else if (lineChartRB.isSelected()) {
@@ -108,7 +109,7 @@ public class TableLayoutController implements Initializable {
                 lineChartStage.setScene(new Scene(lg.lc));
                 lineChartStage.show();
             } catch(Exception e) {
-               System.out.println("Error");
+               System.out.println("Error: " + e);
             }
         }
         else if (scatterChartRB.isSelected()) {
@@ -121,7 +122,7 @@ public class TableLayoutController implements Initializable {
                 scatterPlotStage.setScene(new Scene(sp.sc));
                 scatterPlotStage.show();
             } catch(Exception e) {
-               System.out.println("Error");
+               System.out.println("Error: " + e);
             }
         }
         else if (areaChartRB.isSelected()) {
@@ -134,12 +135,12 @@ public class TableLayoutController implements Initializable {
                 areaChartStage.setScene(new Scene(areaChart.ac));
                 areaChartStage.show();
             } catch(Exception e) {
-               System.out.println("Error");
+               System.out.println("Error: " + e);
             }
         }
         else if (barChartRB.isSelected()) {
             try{
-                BarGraph bg = new BarGraph();
+                BarGraph bg = new BarGraph(tableSettings, tableView.getItems());
                 Stage barChartStage = new Stage();
                 barChartStage.setHeight(600);
                 barChartStage.setWidth(1000);
@@ -147,7 +148,7 @@ public class TableLayoutController implements Initializable {
                 barChartStage.setScene(new Scene(bg.bc));
                 barChartStage.show();
             } catch(Exception e) {
-               System.out.println("Error");
+               System.out.println("Error: " + e);
             }
         }
     }
@@ -155,9 +156,10 @@ public class TableLayoutController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
     
-    void loadSql(HashMap settings, Toggle toggle) {
+    void loadSql(HashMap settings, Toggle toggle, HashMap tableSettings) {
         sqlRB.setSelected(true);
         setChartType(toggle);
+        this.tableSettings = tableSettings;
         
         Connection c = null;
         String connString = "jdbc:postgresql://" + settings.get("server") + ":" + settings.get("port") + "/" + settings.get("db");
@@ -195,9 +197,11 @@ public class TableLayoutController implements Initializable {
         populateTable(entries);
     }
     
-    void loadCsv(Toggle toggle) {
+    void loadCsv(Toggle toggle, HashMap tableSettings) {
         csvRB.setSelected(true);
         setChartType(toggle);
+        this.tableSettings = tableSettings;
+        
         String testFile = "src/main/resources/test_files/BrandsData.csv";
         
         try {

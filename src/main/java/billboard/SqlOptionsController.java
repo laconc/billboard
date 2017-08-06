@@ -42,6 +42,8 @@ public class SqlOptionsController implements Initializable {
     
     @FXML
     private TextField passField;
+    
+    HashMap<String,String> tableSettings;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {}
@@ -60,7 +62,7 @@ public class SqlOptionsController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TableLayout.fxml"));
             Parent tableParent = (Parent) loader.load();
             TableLayoutController controller = loader.getController();
-            controller.loadSql(settings, toggle);
+            controller.loadSql(settings, toggle, tableSettings);
             
             Scene tableScene = new Scene(tableParent);
             rootStage.setScene(tableScene);
@@ -88,5 +90,9 @@ public class SqlOptionsController implements Initializable {
     
     void setSelectedChart(Toggle toggle) {
         this.toggle = toggle;
+    }
+    
+    void setTableSettings(HashMap tableSettings) {
+        this.tableSettings = tableSettings;
     }
 }
