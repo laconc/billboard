@@ -1,0 +1,10 @@
+target
+build
+dist
+nbproject
+out
+.idea
+.DS_Store
+*.iml
+build.xml
+manifest.ml
