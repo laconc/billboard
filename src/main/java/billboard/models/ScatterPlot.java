@@ -14,8 +14,8 @@ public class ScatterPlot {
     private final ScatterChart<Number, Number> sc;
 
     public ScatterPlot(HashMap settings, ObservableList<Entry> entries) {
-        final NumberAxis xAxis = new NumberAxis(0, 10, 1);
-        final NumberAxis yAxis = new NumberAxis(0, 600, 100);
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
         sc = new ScatterChart<>(xAxis, yAxis);
         xAxis.setLabel((String) settings.get("xAxis"));
         yAxis.setLabel((String) settings.get("yAxis"));
@@ -25,10 +25,13 @@ public class ScatterPlot {
         series.setName((String) settings.get("series"));
         
         for (Entry entry : entries) {
-            series.getData().add(new XYChart.Data(entry.getFirst(), Integer.parseInt(entry.getSecond())));
+            series.getData().add(new XYChart.Data(
+                    Double.parseDouble(entry.getFirst()),
+                    Double.parseDouble(entry.getSecond())
+            ));
         }
 
-        series.getData().addAll(series);
+        sc.getData().addAll(series);
     }
     
     public ScatterChart getChart() {

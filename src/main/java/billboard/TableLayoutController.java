@@ -7,6 +7,7 @@ import billboard.models.PieGraph;
 import billboard.models.LineGraph;
 import billboard.models.ScatterPlot;
 import com.opencsv.CSVReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -203,15 +204,13 @@ public class TableLayoutController implements Initializable {
         populateTable(entries);
     }
     
-    void loadCsv(Toggle toggle, HashMap tableSettings) {
+    void loadCsv(File file, Toggle toggle, HashMap tableSettings) {
         csvRB.setSelected(true);
         setChartType(toggle);
         this.tableSettings = tableSettings;
         
-        String testFile = "src/main/resources/test_files/BrandsData.csv";
-        
         try {
-            CSVReader reader = new CSVReader(new FileReader(testFile));
+            CSVReader reader = new CSVReader(new FileReader(file));
             List<String[]> entries = reader.readAll();
             populateTable(entries);
         } catch (IOException e) {

@@ -26,7 +26,7 @@ public class LineGraph {
         series.setName((String) settings.get("series"));
         
         for (Entry entry : entries) {
-            series.getData().add(new XYChart.Data(entry.getFirst(), Integer.parseInt(entry.getSecond())));
+            series.getData().add(new XYChart.Data(entry.getFirst(), Double.parseDouble(entry.getSecond())));
         }
         
         lc.getData().add(series); 

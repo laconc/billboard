@@ -1,5 +1,7 @@
 package billboard;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -49,8 +52,6 @@ public class HomePageController {
     
     @FXML
     void handlePopulateTable(ActionEvent event) {
-        tableSettings.put("x", xField.getText());
-        tableSettings.put("y", yField.getText());
         tableSettings.put("xAxis", xAxisField.getText());
         tableSettings.put("yAxis", yAxisField.getText());
         tableSettings.put("series", seriesField.getText());
@@ -69,22 +70,27 @@ public class HomePageController {
                 Stage sqlStage = new Stage();
                 sqlStage.setScene(sqlScene);
                 sqlStage.show();
-            } catch(Exception e) {
+            } catch(IOException e) {
                    System.out.println("Error" + e);
             }
         }
         else if (csvRB.isSelected()) {
             try {
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Select CSV");
+                fileChooser.setInitialDirectory(new File("src/main/resources/test_files/"));
+                File file = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
+                
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TableLayout.fxml"));
                 Parent tableParent = (Parent) loader.load();
                 TableLayoutController controller = loader.getController();
-                controller.loadCsv(chartTypeToggle.getSelectedToggle(), tableSettings);
+                controller.loadCsv(file, chartTypeToggle.getSelectedToggle(), tableSettings);
 
                 Scene tableScene = new Scene(tableParent);
                 Stage tableStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 tableStage.setScene(tableScene);
                 tableStage.show();
-            } catch(Exception e) {
+            } catch(IOException e) {
                    System.out.println("Error" + e);
             }
         }

@@ -24,7 +24,7 @@ public class PieGraph {
         pieChartData = FXCollections.observableArrayList();
         
         for (Entry entry : entries) {
-            pieChartData.add(new PieChart.Data(entry.getFirst(), Integer.parseInt(entry.getSecond())));
+            pieChartData.add(new PieChart.Data(entry.getFirst(), Double.parseDouble(entry.getSecond())));
         }
         
         pc.setData(pieChartData);
