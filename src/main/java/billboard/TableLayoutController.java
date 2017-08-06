@@ -94,7 +94,7 @@ public class TableLayoutController implements Initializable {
     @FXML
     void handleGenerateChartButton (ActionEvent event) throws IOException {
         if (pieChartRB.isSelected()) {
-            try{
+            try {
                 PieGraph pc = new PieGraph(tableSettings, tableView.getItems());
                 Stage pieChartStage = new Stage();
                 pieChartStage.setWidth(1000);
@@ -107,7 +107,7 @@ public class TableLayoutController implements Initializable {
             }
         }
         else if (lineChartRB.isSelected()) {
-            try{
+            try {
                 LineGraph lg = new LineGraph(tableSettings, tableView.getItems());
                 Stage lineChartStage = new Stage();
                 lineChartStage.setWidth(1000);
@@ -120,7 +120,7 @@ public class TableLayoutController implements Initializable {
             }
         }
         else if (scatterChartRB.isSelected()) {
-            try{
+            try {
                 ScatterPlot sp = new ScatterPlot(tableSettings, tableView.getItems());
                 Stage scatterPlotStage = new Stage();
                 scatterPlotStage.setHeight(600);
@@ -133,7 +133,7 @@ public class TableLayoutController implements Initializable {
             }
         }
         else if (areaChartRB.isSelected()) {
-            try{
+            try {
                 AreaChart areaChart = new AreaChart(tableSettings, tableView.getItems());
                 Stage areaChartStage = new Stage();
                 areaChartStage.setHeight(600);
@@ -146,7 +146,7 @@ public class TableLayoutController implements Initializable {
             }
         }
         else if (barChartRB.isSelected()) {
-            try{
+            try {
                 BarGraph bg = new BarGraph(tableSettings, tableView.getItems());
                 Stage barChartStage = new Stage();
                 barChartStage.setHeight(600);
