@@ -11,7 +11,7 @@ import javafx.scene.chart.XYChart;
  *
  * @author vita, dash
  */
-public class LineGraph {
+public class LineGraph extends Graph {
     private final LineChart<String, Number> lc;
     
     public LineGraph(HashMap settings, ObservableList<Entry> entries) {
@@ -32,6 +32,7 @@ public class LineGraph {
         lc.getData().add(series); 
     }
     
+    @Override
     public LineChart getChart() {
         return lc;
     }

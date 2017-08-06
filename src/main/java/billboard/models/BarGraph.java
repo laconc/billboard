@@ -11,7 +11,7 @@ import javafx.scene.chart.XYChart;
  *
  * @author vita, dash
  */
-public class BarGraph  {
+public class BarGraph extends Graph {
     private final BarChart<String, Number> bc;
     
     public BarGraph(HashMap settings, ObservableList<Entry> entries) {
@@ -32,6 +32,7 @@ public class BarGraph  {
         bc.getData().addAll(series);
     }
     
+    @Override
     public BarChart getChart() {
         return bc;
     }

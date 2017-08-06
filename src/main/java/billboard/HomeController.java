@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  *
  * @author vita, dash
  */
-public class HomePageController {
+public class HomeController {
 
     @FXML
     private RadioButton sqlRB;
@@ -29,12 +29,6 @@ public class HomePageController {
     
     @FXML
     private ToggleGroup chartTypeToggle;
-    
-    @FXML
-    private TextField xField;
-    
-    @FXML
-    private TextField yField;
     
     @FXML
     private TextField xAxisField;

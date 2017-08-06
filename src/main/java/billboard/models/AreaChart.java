@@ -11,7 +11,7 @@ import javafx.scene.chart.XYChart;
  *
  * @author vita, dash
  */
-public class AreaChart {
+public class AreaChart extends Graph {
     private final StackedAreaChart<String, Number> ac;
     
     public AreaChart(HashMap settings, ObservableList<Entry> entries) {
@@ -31,6 +31,7 @@ public class AreaChart {
         ac.getData().addAll(series);
     }
     
+    @Override
     public StackedAreaChart getChart() {
         return ac;
     }

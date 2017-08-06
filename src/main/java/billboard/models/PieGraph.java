@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
  *
  * @author vita, dash
  */
-public class PieGraph {
+public class PieGraph extends Graph {
     private final PieChart pc;
     
     public PieGraph(HashMap settings, ObservableList<Entry> entries) {
@@ -31,6 +31,7 @@ public class PieGraph {
         pc.setTitle(title);
     }
     
+    @Override
     public PieChart getChart() {
         return pc;
     }

@@ -10,7 +10,7 @@ import javafx.scene.chart.XYChart;
  *
  * @author vita, dash
  */
-public class ScatterPlot {
+public class ScatterPlot extends Graph {
     private final ScatterChart<Number, Number> sc;
 
     public ScatterPlot(HashMap settings, ObservableList<Entry> entries) {
@@ -34,6 +34,7 @@ public class ScatterPlot {
         sc.getData().addAll(series);
     }
     
+    @Override
     public ScatterChart getChart() {
         return sc;
     }

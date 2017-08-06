@@ -3,6 +3,7 @@ package billboard;
 import billboard.models.AreaChart;
 import billboard.models.Entry;
 import billboard.models.BarGraph;
+import billboard.models.Graph;
 import billboard.models.PieGraph;
 import billboard.models.LineGraph;
 import billboard.models.ScatterPlot;
@@ -93,70 +94,21 @@ public class TableLayoutController implements Initializable {
 
     @FXML
     void handleGenerateChartButton (ActionEvent event) throws IOException {
-        if (pieChartRB.isSelected()) {
-            try {
-                PieGraph pc = new PieGraph(tableSettings, tableView.getItems());
-                Stage pieChartStage = new Stage();
-                pieChartStage.setWidth(1000);
-                pieChartStage.setHeight(600);
-                pieChartStage.setTitle("Billboard: Pie Chart");
-                pieChartStage.setScene(new Scene(pc.getChart()));
-                pieChartStage.show();
-            } catch(Exception e) {
-               System.out.println("Error: " + e);
-            }
-        }
-        else if (lineChartRB.isSelected()) {
-            try {
-                LineGraph lg = new LineGraph(tableSettings, tableView.getItems());
-                Stage lineChartStage = new Stage();
-                lineChartStage.setWidth(1000);
-                lineChartStage.setHeight(600);
-                lineChartStage.setTitle("Billboard: Line Chart");
-                lineChartStage.setScene(new Scene(lg.getChart()));
-                lineChartStage.show();
-            } catch(Exception e) {
-               System.out.println("Error: " + e);
-            }
-        }
-        else if (scatterChartRB.isSelected()) {
-            try {
-                ScatterPlot sp = new ScatterPlot(tableSettings, tableView.getItems());
-                Stage scatterPlotStage = new Stage();
-                scatterPlotStage.setHeight(600);
-                scatterPlotStage.setWidth(1000);
-                scatterPlotStage.setTitle("Billboard: Scatter Plot");
-                scatterPlotStage.setScene(new Scene(sp.getChart()));
-                scatterPlotStage.show();
-            } catch(Exception e) {
-               System.out.println("Error: " + e);
-            }
-        }
-        else if (areaChartRB.isSelected()) {
-            try {
-                AreaChart areaChart = new AreaChart(tableSettings, tableView.getItems());
-                Stage areaChartStage = new Stage();
-                areaChartStage.setHeight(600);
-                areaChartStage.setWidth(1000);
-                areaChartStage.setTitle("Billboard: Area Plot");
-                areaChartStage.setScene(new Scene(areaChart.getChart()));
-                areaChartStage.show();
-            } catch(Exception e) {
-               System.out.println("Error: " + e);
-            }
-        }
-        else if (barChartRB.isSelected()) {
-            try {
-                BarGraph bg = new BarGraph(tableSettings, tableView.getItems());
-                Stage barChartStage = new Stage();
-                barChartStage.setHeight(600);
-                barChartStage.setWidth(1000);
-                barChartStage.setTitle("Billboard: Bar Graph");
-                barChartStage.setScene(new Scene(bg.getChart()));
-                barChartStage.show();
-            } catch(Exception e) {
-               System.out.println("Error: " + e);
-            }
+        switch(((RadioButton) chartTypeToggle.getSelectedToggle()).getId()) {
+            case "pieChartRB":
+                displayChart(new PieGraph(tableSettings, tableView.getItems()));
+                break;
+            case "lineChartRB":
+                displayChart(new LineGraph(tableSettings, tableView.getItems()));
+                break;
+            case "scatterChartRB":
+                displayChart(new ScatterPlot(tableSettings, tableView.getItems()));
+                break;
+            case "areaChartRB":
+                displayChart(new AreaChart(tableSettings, tableView.getItems()));
+                break;
+            case "barChartRB":
+                displayChart(new BarGraph(tableSettings, tableView.getItems()));
         }
     }
 
@@ -242,5 +194,14 @@ public class TableLayoutController implements Initializable {
             }
         }
         chartTypeToggle.selectToggle(selectedToggle);
+    }
+    
+    void displayChart(Graph chart) {
+        Stage chartStage = new Stage();
+        chartStage.setHeight(600);
+        chartStage.setWidth(1000);
+        chartStage.setTitle("Billboard: Graph");
+        chartStage.setScene(new Scene(chart.getChart()));
+        chartStage.show();
     }
 }
