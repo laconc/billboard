@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /**
@@ -29,19 +32,13 @@ import javafx.stage.Stage;
 public class TableLayoutController implements Initializable {
     
     @FXML
-    private TableView<Items> tableView;
+    private TableView<Entry> tableView;
     
     @FXML
-    private TableColumn<Items, String> firstCol;
+    private TableColumn<Entry,String> firstCol;
 
     @FXML
-    private TableColumn<Items, Integer> secondCol;
-
-    @FXML
-    private TableColumn<Items, Integer> thirdCol;
-
-    @FXML
-    private TableColumn<Items, Integer> fourthCol;
+    private TableColumn<Entry,String> secondCol;
 
     @FXML
     private Button homeButton;
@@ -91,9 +88,25 @@ public class TableLayoutController implements Initializable {
         try {
             CSVReader reader = new CSVReader(new FileReader(testFile));
             List<String[]> entries = reader.readAll();
-//            System.out.println(entries.get(0)[0]);
+            populateTable(entries);
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
+    }
+    
+    void populateTable(List<String[]> entries) {
+        ObservableList<Entry> tableEntries = FXCollections.observableArrayList();
+        
+        firstCol.setText(entries.get(0)[0]);
+        secondCol.setText(entries.get(0)[1]);
+        
+        for (int i = 1; i < entries.size(); i++) {
+            tableEntries.add(new Entry(entries.get(i)[0], entries.get(i)[1]));
+        }
+        
+        firstCol.setCellValueFactory(new PropertyValueFactory<Entry,String>("first"));
+        secondCol.setCellValueFactory(new PropertyValueFactory<Entry,String>("second"));
+        
+        tableView.setItems(tableEntries);
     }
 }
