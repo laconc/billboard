@@ -134,8 +134,12 @@ public class HomePageController {
     void handlePopulateTable(ActionEvent event) {
         if (sqlRB.isSelected()) {
             try {
-                Parent sqlPage = FXMLLoader.load(getClass().getResource("/fxml/SqlOptions.fxml"));
-                Scene sqlScene = new Scene(sqlPage);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/SqlOptions.fxml"));
+                Parent sqlParent = (Parent) loader.load();
+                SqlOptionsController controller = loader.getController();
+                controller.setRoot((Stage) ((Node) event.getSource()).getScene().getWindow());
+                
+                Scene sqlScene = new Scene(sqlParent);
                 Stage sqlStage = new Stage();
                 sqlStage.setScene(sqlScene);
                 sqlStage.show();
@@ -144,14 +148,12 @@ public class HomePageController {
             }
         }
         else if (csvRB.isSelected()) {
-            loadTable(event, null);
-        }
-    }
-    
-    void loadTable(ActionEvent event, HashMap options) {
-        if (options == null) { // csv
             try {
-                Parent tableParent = FXMLLoader.load(getClass().getResource("/fxml/TableLayout.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TableLayout.fxml"));
+                Parent tableParent = (Parent) loader.load();
+                TableLayoutController controller = loader.getController();
+                controller.loadCsv();
+
                 Scene tableScene = new Scene(tableParent);
                 Stage tableStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 tableStage.setScene(tableScene);
@@ -159,9 +161,6 @@ public class HomePageController {
             } catch(Exception e) {
                    System.out.println("Error");
             }
-        }
-        else { // sql
-            
         }
     }
 }

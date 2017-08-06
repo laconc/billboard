@@ -1,14 +1,12 @@
 package billboard;
 
 import com.opencsv.CSVReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -78,8 +76,10 @@ public class TableLayoutController implements Initializable {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        loadCsv();
+    public void initialize(URL location, ResourceBundle resources) {}
+    
+    void loadSql(HashMap settings) {
+        
     }
     
     void loadCsv() {

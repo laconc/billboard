@@ -25,11 +25,11 @@ public class LoginController implements Initializable {
     
     @FXML
     void handleLoginButton(ActionEvent event) throws IOException {
-        Parent main_page_parent = FXMLLoader.load(getClass().getResource("/fxml/HomePage.fxml"));
-        Scene main_page_scene = new Scene(main_page_parent);
-        Stage app_main = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        app_main.setScene(main_page_scene);
-        app_main.show();
+        Parent homeParent = FXMLLoader.load(getClass().getResource("/fxml/HomePage.fxml"));
+        Scene homeScene = new Scene(homeParent);
+        Stage homeStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        homeStage.setScene(homeScene);
+        homeStage.show();
         
         status.setTextFill(Color.GREEN);
         status.setText("Success");
