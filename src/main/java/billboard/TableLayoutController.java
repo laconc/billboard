@@ -88,7 +88,7 @@ public class TableLayoutController implements Initializable {
     void handleGenerateChartButton (ActionEvent event) throws IOException {
         if (pieChartRB.isSelected()) {
             try{
-                PieGraph pc = new PieGraph();
+                PieGraph pc = new PieGraph(tableSettings, tableView.getItems());
                 Stage pieChartStage = new Stage();
                 pieChartStage.setWidth(1000);
                 pieChartStage.setHeight(600);
@@ -101,7 +101,7 @@ public class TableLayoutController implements Initializable {
         }
         else if (lineChartRB.isSelected()) {
             try{
-                LineGraph lg = new LineGraph();
+                LineGraph lg = new LineGraph(tableSettings, tableView.getItems());
                 Stage lineChartStage = new Stage();
                 lineChartStage.setWidth(1000);
                 lineChartStage.setHeight(600);
@@ -114,7 +114,7 @@ public class TableLayoutController implements Initializable {
         }
         else if (scatterChartRB.isSelected()) {
             try{
-                ScatterPlot sp = new ScatterPlot();
+                ScatterPlot sp = new ScatterPlot(tableSettings, tableView.getItems());
                 Stage scatterPlotStage = new Stage();
                 scatterPlotStage.setHeight(600);
                 scatterPlotStage.setWidth(1000);
@@ -127,7 +127,7 @@ public class TableLayoutController implements Initializable {
         }
         else if (areaChartRB.isSelected()) {
             try{
-                AreaChart areaChart = new AreaChart();
+                AreaChart areaChart = new AreaChart(tableSettings, tableView.getItems());
                 Stage areaChartStage = new Stage();
                 areaChartStage.setHeight(600);
                 areaChartStage.setWidth(1000);

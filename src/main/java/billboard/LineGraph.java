@@ -1,29 +1,34 @@
 package billboard;
 
+import java.util.HashMap;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
-public class LineGraph  {
+/**
+ *
+ * @author vita, dash
+ */
+public class LineGraph {
+    final LineChart<String, Number> lc;
     
-    final LineChart<Number, Number> lc;
-    
-    public LineGraph() {
-        final NumberAxis x_Axis = new NumberAxis();
+    public LineGraph(HashMap settings, ObservableList<Entry> entries) {
+        final CategoryAxis x_Axis = new CategoryAxis();
         final NumberAxis y_Axis = new NumberAxis();
-        x_Axis.setLabel("Nt");
-        //creating the chart
-        lc = new LineChart<>(x_Axis, y_Axis);
-        lc.setTitle("110");
-        //defining a series
-        XYChart.Series ss = new XYChart.Series();
-        ss.setName("go");
-        //populating the series with data
-        ss.getData().addAll(new XYChart.Data(1, 23),
-            new XYChart.Data(10, 17),
-            new XYChart.Data(11, 29),
-            new XYChart.Data(12, 25));
+        x_Axis.setLabel((String) settings.get("xAxis"));
         
-        lc.getData().add(ss); 
+        lc = new LineChart<>(x_Axis, y_Axis);
+        lc.setTitle((String) settings.get("title"));
+        
+        XYChart.Series series = new XYChart.Series();
+        series.setName((String) settings.get("series"));
+        
+        for (Entry entry : entries) {
+            series.getData().add(new XYChart.Data(entry.getFirst(), Integer.parseInt(entry.getSecond())));
+        }
+        
+        lc.getData().add(series); 
     }  
 }

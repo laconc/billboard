@@ -1,45 +1,33 @@
 package billboard;
 
+import java.util.HashMap;
+import javafx.collections.ObservableList;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.chart.XYChart;
 
 /**
- * FXML Controller class
  *
- * @author vita
+ * @author vita, dash
  */
 public class ScatterPlot {
-
-   
     final ScatterChart<Number, Number> sc;
 
-    public ScatterPlot() {
-
+    public ScatterPlot(HashMap settings, ObservableList<Entry> entries) {
         final NumberAxis xAxis = new NumberAxis(0, 10, 1);
-        final NumberAxis yAxis = new NumberAxis(-150, 600, 120);
+        final NumberAxis yAxis = new NumberAxis(0, 600, 100);
         sc = new ScatterChart<>(xAxis, yAxis);
-        xAxis.setLabel("As)");
-        yAxis.setLabel("u");
-        sc.setTitle("Y");
+        xAxis.setLabel((String) settings.get("xAxis"));
+        yAxis.setLabel((String) settings.get("yAxis"));
+        sc.setTitle((String) settings.get("title"));
 
-        XYChart.Series s1 = new XYChart.Series();
-        s1.setName("T");
+        XYChart.Series series = new XYChart.Series();
+        series.setName((String) settings.get("series"));
         
-        
-        s1.getData().addAll(new XYChart.Data(8.0, 11.8),
-            new XYChart.Data(3, 12),
-            new XYChart.Data(3, 40),
-            new XYChart.Data(11, 270));
-        
-        XYChart.Series s2 = new XYChart.Series();
-        s2.setName("Mutual funds");
-        s2.getData().addAll(new XYChart.Data(6, 240),
-            new XYChart.Data(35, 60),
-            new XYChart.Data(5, 50));
-            
+        for (Entry entry : entries) {
+            series.getData().add(new XYChart.Data(entry.getFirst(), Integer.parseInt(entry.getSecond())));
+        }
 
-        sc.getData().addAll(s1, s2);
+        series.getData().addAll(series);
     }
-
 }

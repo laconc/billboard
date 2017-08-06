@@ -1,40 +1,33 @@
 package billboard;
 
+import java.util.HashMap;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.StackedAreaChart;
 import javafx.scene.chart.XYChart;
 
 /**
  *
- * @author vita
+ * @author vita, dash
  */
-public class AreaChart  {
-
-    final StackedAreaChart<Number, Number> ac;
+public class AreaChart {
+    final StackedAreaChart<String, Number> ac;
     
-    public AreaChart() {
-        final NumberAxis x_Axis = new NumberAxis(4, 40, 2);
-        final NumberAxis y_Axis = new NumberAxis();
+    public AreaChart(HashMap settings, ObservableList<Entry> entries) {
+        final CategoryAxis x_Axis = new CategoryAxis();
+        final NumberAxis y_Axis = new NumberAxis(0, 1000, 100);
         ac = 
             new StackedAreaChart<>(x_Axis,y_Axis);
-        ac.setTitle("T");
+        ac.setTitle((String) settings.get("title"));
  
-        XYChart.Series ss1= new XYChart.Series();
-        ss1.setName("a");
-        ss1.getData().addAll(new XYChart.Data(1, 4),
-            new XYChart.Data(6, 12),
-            new XYChart.Data(3, 18),
-            new XYChart.Data(3, 10));
+        XYChart.Series series = new XYChart.Series();
+        series.setName((String) settings.get("series"));
         
+        for (Entry entry : entries) {
+            series.getData().add(new XYChart.Data(entry.getFirst(), Integer.parseInt(entry.getSecond())));
+        }
         
-        XYChart.Series ss2 = new XYChart.Series();
-        ss2.setName("May");
-        ss2.getData().addAll(new XYChart.Data(1, 20),
-            new XYChart.Data(3, 17),
-            new XYChart.Data(9, 11),
-        
-            new XYChart.Data(12, 10));
-        
-        ac.getData().addAll(ss1, ss2);
+        ac.getData().addAll(series);
     }
 }

@@ -1,5 +1,6 @@
 package billboard;
 
+import java.util.HashMap;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
@@ -8,25 +9,23 @@ import javafx.scene.paint.Color;
 
 /**
  *
- * @author vita
+ * @author vita, dash
  */
 public class PieGraph {
-    
     final PieChart pc;
     
-    public PieGraph() {
+    public PieGraph(HashMap settings, ObservableList<Entry> entries) {
         pc = new PieChart();
         ObservableList<PieChart.Data> pieChartData;
-        String title = "hello";
-        final Label caption = new Label("");
-        
-        pieChartData = FXCollections.observableArrayList(
-            new PieChart.Data("2", 25),
-            new PieChart.Data("u", 25),
-            new PieChart.Data("5", 15),
-            new PieChart.Data("3", 8),
-            new PieChart.Data("r", 27));
+        String title = (String) settings.get("title");
+        final Label caption = new Label((String) settings.get("series"));
         caption.setTextFill(Color.DARKORANGE);
+        
+        pieChartData = FXCollections.observableArrayList();
+        
+        for (Entry entry : entries) {
+            pieChartData.add(new PieChart.Data(entry.getFirst(), Integer.parseInt(entry.getSecond())));
+        }
         
         pc.setData(pieChartData);
         pc.setTitle(title);
