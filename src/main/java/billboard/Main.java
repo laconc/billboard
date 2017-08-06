@@ -10,7 +10,7 @@ import javafx.stage.Stage;
  *
  * @author vita, dash
  */
-public class Billboard extends Application {
+public class Main extends Application {
     public static Stage primaryStage;
     
     @Override

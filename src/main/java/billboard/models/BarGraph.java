@@ -1,4 +1,4 @@
-package billboard;
+package billboard.models;
 
 import java.util.HashMap;
 import javafx.collections.ObservableList;
@@ -12,7 +12,7 @@ import javafx.scene.chart.XYChart;
  * @author vita, dash
  */
 public class BarGraph  {
-    final BarChart<String, Number> bc;
+    private final BarChart<String, Number> bc;
     
     public BarGraph(HashMap settings, ObservableList<Entry> entries) {
         final CategoryAxis xAxis = new CategoryAxis();
@@ -30,5 +30,9 @@ public class BarGraph  {
         }
         
         bc.getData().addAll(series);
+    }
+    
+    public BarChart getChart() {
+        return bc;
     }
 }

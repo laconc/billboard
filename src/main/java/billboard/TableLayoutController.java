@@ -1,5 +1,11 @@
 package billboard;
 
+import billboard.models.AreaChart;
+import billboard.models.Entry;
+import billboard.models.BarGraph;
+import billboard.models.PieGraph;
+import billboard.models.LineGraph;
+import billboard.models.ScatterPlot;
 import com.opencsv.CSVReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -93,7 +99,7 @@ public class TableLayoutController implements Initializable {
                 pieChartStage.setWidth(1000);
                 pieChartStage.setHeight(600);
                 pieChartStage.setTitle("Billboard: Pie Chart");
-                pieChartStage.setScene(new Scene(pc.pc));
+                pieChartStage.setScene(new Scene(pc.getChart()));
                 pieChartStage.show();
             } catch(Exception e) {
                System.out.println("Error: " + e);
@@ -106,7 +112,7 @@ public class TableLayoutController implements Initializable {
                 lineChartStage.setWidth(1000);
                 lineChartStage.setHeight(600);
                 lineChartStage.setTitle("Billboard: Line Chart");
-                lineChartStage.setScene(new Scene(lg.lc));
+                lineChartStage.setScene(new Scene(lg.getChart()));
                 lineChartStage.show();
             } catch(Exception e) {
                System.out.println("Error: " + e);
@@ -119,7 +125,7 @@ public class TableLayoutController implements Initializable {
                 scatterPlotStage.setHeight(600);
                 scatterPlotStage.setWidth(1000);
                 scatterPlotStage.setTitle("Billboard: Scatter Plot");
-                scatterPlotStage.setScene(new Scene(sp.sc));
+                scatterPlotStage.setScene(new Scene(sp.getChart()));
                 scatterPlotStage.show();
             } catch(Exception e) {
                System.out.println("Error: " + e);
@@ -132,7 +138,7 @@ public class TableLayoutController implements Initializable {
                 areaChartStage.setHeight(600);
                 areaChartStage.setWidth(1000);
                 areaChartStage.setTitle("Billboard: Area Plot");
-                areaChartStage.setScene(new Scene(areaChart.ac));
+                areaChartStage.setScene(new Scene(areaChart.getChart()));
                 areaChartStage.show();
             } catch(Exception e) {
                System.out.println("Error: " + e);
@@ -145,7 +151,7 @@ public class TableLayoutController implements Initializable {
                 barChartStage.setHeight(600);
                 barChartStage.setWidth(1000);
                 barChartStage.setTitle("Billboard: Bar Graph");
-                barChartStage.setScene(new Scene(bg.bc));
+                barChartStage.setScene(new Scene(bg.getChart()));
                 barChartStage.show();
             } catch(Exception e) {
                System.out.println("Error: " + e);

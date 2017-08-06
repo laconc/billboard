@@ -1,4 +1,4 @@
-package billboard;
+package billboard.models;
 
 import java.util.HashMap;
 import javafx.collections.FXCollections;
@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
  * @author vita, dash
  */
 public class PieGraph {
-    final PieChart pc;
+    private final PieChart pc;
     
     public PieGraph(HashMap settings, ObservableList<Entry> entries) {
         pc = new PieChart();
@@ -29,5 +29,9 @@ public class PieGraph {
         
         pc.setData(pieChartData);
         pc.setTitle(title);
+    }
+    
+    public PieChart getChart() {
+        return pc;
     }
 }

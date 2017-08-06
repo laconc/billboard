@@ -1,4 +1,4 @@
-package billboard;
+package billboard.models;
 
 import java.util.HashMap;
 import javafx.collections.ObservableList;
@@ -12,7 +12,7 @@ import javafx.scene.chart.XYChart;
  * @author vita, dash
  */
 public class LineGraph {
-    final LineChart<String, Number> lc;
+    private final LineChart<String, Number> lc;
     
     public LineGraph(HashMap settings, ObservableList<Entry> entries) {
         final CategoryAxis x_Axis = new CategoryAxis();
@@ -30,5 +30,9 @@ public class LineGraph {
         }
         
         lc.getData().add(series); 
-    }  
+    }
+    
+    public LineChart getChart() {
+        return lc;
+    }
 }

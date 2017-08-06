@@ -1,4 +1,4 @@
-package billboard;
+package billboard.models;
 
 import java.util.HashMap;
 import javafx.collections.ObservableList;
@@ -12,7 +12,7 @@ import javafx.scene.chart.XYChart;
  * @author vita, dash
  */
 public class AreaChart {
-    final StackedAreaChart<String, Number> ac;
+    private final StackedAreaChart<String, Number> ac;
     
     public AreaChart(HashMap settings, ObservableList<Entry> entries) {
         final CategoryAxis x_Axis = new CategoryAxis();
@@ -29,5 +29,9 @@ public class AreaChart {
         }
         
         ac.getData().addAll(series);
+    }
+    
+    public StackedAreaChart getChart() {
+        return ac;
     }
 }

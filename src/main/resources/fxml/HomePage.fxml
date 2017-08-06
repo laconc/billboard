@@ -137,7 +137,7 @@
                            <children>
                               <VBox prefHeight="239.0" prefWidth="260.0" style="-fx-border-color: #000000; -fx-border-width: 5px; -fx-border-radius: 10px;" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                  <children>
-                                    <Label alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="233.0" style="-fx-border-color: #000000;" text="Data Input:">
+                                    <Label alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="233.0" text="Data Input:">
                                        <font>
                                           <Font name="Arial Black" size="14.0" />
                                        </font>
@@ -149,12 +149,15 @@
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="titleField" prefHeight="36.0" prefWidth="260.0">
+                                          <TextField fx:id="titleField" maxHeight="30.0" prefHeight="30.0" prefWidth="260.0">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" />
                                              </HBox.margin>
                                           </TextField>
                                        </children>
+                                       <padding>
+                                          <Insets bottom="20.0" top="20.0" />
+                                       </padding>
                                     </HBox>
                                     <HBox prefHeight="35.0" prefWidth="200.0">
                                        <children>
@@ -163,68 +166,49 @@
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="seriesField" prefHeight="36.0" prefWidth="260.0">
+                                          <TextField fx:id="seriesField" maxHeight="30.0" prefHeight="30.0" prefWidth="260.0">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" />
                                              </HBox.margin>
                                           </TextField>
                                        </children>
+                                       <padding>
+                                          <Insets bottom="20.0" />
+                                       </padding>
                                     </HBox>
                                     <HBox prefHeight="35.0" prefWidth="260.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="110.0" text="x-Value:  ">
+                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="X-Axis:  ">
                                              <font>
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField prefHeight="36.0" prefWidth="260.0" fx:id="xField">
-                                             <HBox.margin>
-                                                <Insets bottom="5.0" right="5.0" top="5.0" />
-                                             </HBox.margin>
-                                          </TextField>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="35.0" prefWidth="260.0">
-                                       <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="110.0" text="y-Value:  ">
-                                             <font>
-                                                <Font name="Arial Black" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField fx:id="yField" prefHeight="36.0" prefWidth="260.0">
+                                          <TextField maxHeight="30.0" prefHeight="30.0" prefWidth="260.0" fx:id="xAxisField">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" />
                                              </HBox.margin>
                                           </TextField>
                                        </children>
-                                    </HBox>
-                                    <HBox prefHeight="35.0" prefWidth="260.0">
-                                       <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="x-Axis Label:  ">
-                                             <font>
-                                                <Font name="Arial Black" size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <TextField prefHeight="36.0" prefWidth="260.0" fx:id="xAxisField">
-                                             <HBox.margin>
-                                                <Insets bottom="5.0" right="5.0" />
-                                             </HBox.margin>
-                                          </TextField>
-                                       </children>
+                                       <padding>
+                                          <Insets bottom="20.0" />
+                                       </padding>
                                     </HBox>
                                     <HBox prefHeight="35.0" prefWidth="200.0">
                                        <children>
-                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="y-Axis Label:  ">
+                                          <Label alignment="CENTER_RIGHT" prefHeight="33.0" prefWidth="110.0" text="Y-Axis:  ">
                                              <font>
                                                 <Font name="Arial Black" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField fx:id="yAxisField" prefHeight="36.0" prefWidth="260.0">
+                                          <TextField fx:id="yAxisField" maxHeight="30.0" prefHeight="30.0" prefWidth="260.0">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" right="5.0" />
                                              </HBox.margin>
                                           </TextField>
                                        </children>
+                                       <padding>
+                                          <Insets bottom="20.0" />
+                                       </padding>
                                     </HBox>
                                  </children>
                               </VBox>

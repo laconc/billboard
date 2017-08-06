@@ -1,4 +1,4 @@
-package billboard;
+package billboard.models;
 
 import java.util.HashMap;
 import javafx.collections.ObservableList;
@@ -11,7 +11,7 @@ import javafx.scene.chart.XYChart;
  * @author vita, dash
  */
 public class ScatterPlot {
-    final ScatterChart<Number, Number> sc;
+    private final ScatterChart<Number, Number> sc;
 
     public ScatterPlot(HashMap settings, ObservableList<Entry> entries) {
         final NumberAxis xAxis = new NumberAxis(0, 10, 1);
@@ -29,5 +29,9 @@ public class ScatterPlot {
         }
 
         series.getData().addAll(series);
+    }
+    
+    public ScatterChart getChart() {
+        return sc;
     }
 }

@@ -1,4 +1,4 @@
-package billboard;
+package billboard.models;
 
 import javafx.beans.property.SimpleStringProperty;
 
@@ -10,7 +10,7 @@ public class Entry {
     private final SimpleStringProperty first;
     private final SimpleStringProperty second;
  
-    Entry (String first, String second) {
+    public Entry (String first, String second) {
         this.first = new SimpleStringProperty(first);
         this.second = new SimpleStringProperty(second);
     }
