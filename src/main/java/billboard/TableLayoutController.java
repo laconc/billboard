@@ -64,18 +64,6 @@ public class TableLayoutController implements Initializable {
 
     @FXML
     private RadioButton barChartRB;
-
-    @FXML
-    private RadioButton lineChartRB;
-
-    @FXML
-    private RadioButton pieChartRB;
-
-    @FXML
-    private RadioButton scatterChartRB;
-
-    @FXML
-    private RadioButton areaChartRB;
     
     HashMap<String,String> tableSettings;
 
