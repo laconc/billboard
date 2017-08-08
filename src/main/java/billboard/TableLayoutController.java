@@ -128,15 +128,15 @@ public class TableLayoutController implements Initializable {
                 rs.getMetaData().getColumnName(3)
             });
             
-            while ( rs.next() ) {
+            while (rs.next()) {
                 entries.add(new String[] {
                     rs.getString(2),
                     rs.getString(3)
                 });
             }
-         rs.close();
-         stmt.close();
-         c.close();
+            rs.close();
+            stmt.close();
+            c.close();
         } catch (SQLException e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
         }
